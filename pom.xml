@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.ppr.java</groupId>
+    <artifactId>Project-parent</artifactId>
+    <version>${revision}${changelist}</version>
+    <packaging>pom</packaging>
+    <modules>
+        <module>project-app</module>
+        <module>project-web</module>
+        <module>project-business</module>
+        <module>project-dto</module>
+        <module>project-mapping</module>
+        <module>project-common</module>
+    </modules>
+
+    <properties>
+        <revision>1.0</revision>
+        <changelist>-SNAPSHOT</changelist>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <lombok.version>1.18.30</lombok.version>
+        <postgresql.version>42.6.1</postgresql.version>
+        <liquibase-core.version>4.24.0</liquibase-core.version>
+        <spring-boot.version>3.2.1</spring-boot.version>
+        <spring-boot-starter.version>3.2.1</spring-boot-starter.version>
+        <spring-boot-starter-data-jpa.version>3.2.1</spring-boot-starter-data-jpa.version>
+        <spring-boot-starter-web.version>3.2.1</spring-boot-starter-web.version>
+        <spring-boot-starter-validation.version>3.2.1</spring-boot-starter-validation.version>
+        <spring-boot-starter-security.version>3.2.1</spring-boot-starter-security.version>
+        <springdoc-openapi-starter-webmvc-ui.version>2.0.2</springdoc-openapi-starter-webmvc-ui.version>
+        <spring-boot-starter-test.version>3.2.1</spring-boot-starter-test.version>
+        <testcontainers.version>1.19.5</testcontainers.version>
+        <junit-jupiter-api.version>5.10.2</junit-jupiter-api.version>
+        <spring-test.version>6.0.9</spring-test.version>
+        <spring-security-test.version>6.1.0</spring-security-test.version>
+        <jackson-databind.version>2.15.2</jackson-databind.version>
+        <spring-boot-starter-log4j2.version>3.2.1</spring-boot-starter-log4j2.version>
+        <slf4j-api.version>2.0.9</slf4j-api.version>
+        <spring-boot-starter-amqp.version>3.2.1</spring-boot-starter-amqp.version>
+        <spring-boot-configuration-processor.version>3.2.1</spring-boot-configuration-processor.version>
+        <spring-boot-starter-mail.version>3.2.1</spring-boot-starter-mail.version>
+        <spring-boot-starter-thymeleaf.version>3.2.1</spring-boot-starter-thymeleaf.version>
+
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
+        </dependency>
+    </dependencies>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- modules-->
+
+            <dependency>
+                <groupId>com.ppr.java</groupId>
+                <artifactId>project-common</artifactId>
+                <version>${revision}${changelist}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.ppr.java</groupId>
+                <artifactId>project-dto</artifactId>
+                <version>${revision}${changelist}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.ppr.java</groupId>
+                <artifactId>project-mapping</artifactId>
+                <version>${revision}${changelist}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.ppr.java</groupId>
+                <artifactId>project-web</artifactId>
+                <version>${revision}${changelist}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.ppr.java</groupId>
+                <artifactId>project-business</artifactId>
+                <version>${revision}${changelist}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.ppr.java</groupId>
+                <artifactId>project-app</artifactId>
+                <version>${revision}${changelist}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.ppr.java</groupId>
+                <artifactId>project-model</artifactId>
+                <version>${revision}${changelist}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.ppr.java</groupId>
+                <artifactId>project-repository</artifactId>
+                <version>${revision}${changelist}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.ppr.java</groupId>
+                <artifactId>project-services</artifactId>
+                <version>${revision}${changelist}</version>
+            </dependency>
+
+            <!-- web -->
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter</artifactId>
+                <version>${spring-boot-starter.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.springframework.boot</groupId>
+                        <artifactId>spring-boot-starter-logging</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-web</artifactId>
+                <version>${spring-boot-starter-web.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.springframework.boot</groupId>
+                        <artifactId>spring-boot-starter-logging</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-validation</artifactId>
+                <version>${spring-boot-starter-validation.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-security</artifactId>
+                <version>${spring-boot-starter-security.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-configuration-processor</artifactId>
+                <version>${spring-boot-configuration-processor.version}</version>
+                <optional>true</optional>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springdoc</groupId>
+                <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+                <version>${springdoc-openapi-starter-webmvc-ui.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-amqp</artifactId>
+                <version>${spring-boot-starter-amqp.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-mail</artifactId>
+                <version>${spring-boot-starter-mail.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-thymeleaf</artifactId>
+                <version>${spring-boot-starter-thymeleaf.version}</version>
+            </dependency>
+
+            <!-- persistence -->
+
+            <dependency>
+                <groupId>org.postgresql</groupId>
+                <artifactId>postgresql</artifactId>
+                <version>${postgresql.version}</version>
+                <scope>runtime</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.liquibase</groupId>
+                <artifactId>liquibase-core</artifactId>
+                <version>${liquibase-core.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-data-jpa</artifactId>
+                <version>${spring-boot-starter-data-jpa.version}</version>
+            </dependency>
+
+            <!-- log -->
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-log4j2</artifactId>
+                <version>${spring-boot-starter-log4j2.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>${slf4j-api.version}</version>
+            </dependency>
+
+            <!-- test -->
+
+            <dependency>
+                <groupId>org.testcontainers</groupId>
+                <artifactId>postgresql</artifactId>
+                <version>${testcontainers.version}</version>
+                <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.testcontainers</groupId>
+                <artifactId>testcontainers</artifactId>
+                <version>${testcontainers.version}</version>
+                <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.testcontainers</groupId>
+                <artifactId>junit-jupiter</artifactId>
+                <version>${testcontainers.version}</version>
+                <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.junit.jupiter</groupId>
+                <artifactId>junit-jupiter-api</artifactId>
+                <version>${junit-jupiter-api.version}</version>
+                <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-test</artifactId>
+                <version>${spring-test.version}</version>
+                <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-test</artifactId>
+                <version>${spring-boot-starter-test.version}</version>
+                <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.security</groupId>
+                <artifactId>spring-security-test</artifactId>
+                <version>${spring-security-test.version}</version>
+                <scope>test</scope>
+            </dependency>
+
+            <!-- utils -->
+
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+                <scope>provided</scope>
+            </dependency>
+
+
+        </dependencies>
+    </dependencyManagement>
+
+</project>

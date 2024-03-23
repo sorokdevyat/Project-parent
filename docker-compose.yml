@@ -1,0 +1,32 @@
+version: "3.7"
+
+services:
+  postgresql:
+    image: postgres
+    environment:
+      POSTGRES_USER : "nikita"
+      POSTGRES_PASSWORD : "nikita"
+      POSTGRES_DB : "project_db"
+    networks:
+      asd:
+
+    ports:
+      - "5432:5432"
+    volumes:
+      - ddproject-postgres-data:/var/lib/ddproject/postgresql/data
+  rabbitmq:
+    image: rabbitmq:management
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      - RABBITMQ_DEFAULT_USER=admin
+      - RABBITMQ_DEFAULT_PASS=admin
+    networks:
+      asd:
+
+volumes:
+  ddproject-postgres-data:
+
+networks:
+  asd:
